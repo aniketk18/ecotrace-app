@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: ecotrace_mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - ecotrace_network
+
+  app:
+    build: .
+    container_name: ecotrace_app
+    environment:
+      NODE_ENV: development
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/ecotrace?authSource=admin
+      JWT_SECRET: your_super_secret_jwt_key_here
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    networks:
+      - ecotrace_network
+    command: npm run dev
+
+volumes:
+  mongodb_data:
+
+networks:
+  ecotrace_network:
+    driver: bridge
