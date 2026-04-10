@@ -83,7 +83,7 @@ export default function AdminLoginPage() {
               />
             </div>
 
-            <p
+            {/* <p
               style={{
                 fontSize: '12px',
                 color: 'var(--muted)',
@@ -94,7 +94,7 @@ export default function AdminLoginPage() {
               }}
             >
               🔑 Default: <strong>admin</strong> / <strong>admin123</strong>
-            </p>
+            </p> */}
 
             <button
               onClick={handleLogin}

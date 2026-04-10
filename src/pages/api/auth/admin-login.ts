@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const admin = await Admin.findOne({ username });
       if (admin) {
         isValid = await admin.comparePassword(password);
-      } else if (username === 'admin' && password === 'admin123') {
+      } else if (username === 'harshal' && password === 'harshal123') {
         // Default credentials
         isValid = true;
       }
