@@ -128,7 +128,7 @@ export default function LoginPage() {
                   value={dept} onChange={e => setDept(e.target.value)}
                 >
                   <option value="">Select department…</option>
-                  <option>Engineering</option>
+                  <option>E-COM</option>
                   <option>Operations</option>
                   <option>HR &amp; Admin</option>
                   <option>Finance</option>
@@ -136,6 +136,20 @@ export default function LoginPage() {
                   <option>Sales</option>
                   <option>IT &amp; Digital</option>
                   <option>Management</option>
+                  <option>Holistics and Wellness</option>
+                  <option>Export</option>
+                  <option>SCM</option>
+                  <option>Civil</option>
+                  <option>JLI</option>
+                  <option>Pixxel</option>
+                  <option>RND</option>
+                  <option>DND</option>
+                  <option>JRF</option>
+                  <option>JR-Farms</option>
+                  <option>Legal</option>
+                  <option>Purchase</option>
+                  <option>Packaging and Shipping</option>
+                  <option>Studio</option>
                   <option>Other</option>
                 </select>
               </div>
