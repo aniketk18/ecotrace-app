@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ error: 'OPENROUTER_API_KEY not configured in .env.local' });
     }
 
-    const promptSetting = await Settings.findOne({ key: 'llm_prompt' });
+    // const promptSetting = await Settings.findOne({ key: 'llm_prompt' });
 
     const defaultPrompt = `You are an expert Sustainability Analyst specializing in ESG (Environmental, Social, Governance), carbon footprint assessment, and behavioral impact analysis.
 
@@ -38,8 +38,70 @@ Generate a Root Cause & Environmental Impact Analysis in this format:
 -> Area: <Area Name>
    Root Cause: <Behavior-based reasoning> (Max 2 Lines)
    Systemic Impact: <Macro-level ESG impact> (Max 2 Lines)`;
+//     const defaultPrompt = `You are an expert Sustainability Analyst specializing in ESG (Environmental, Social, Governance), carbon footprint assessment, and behavioral impact analysis.
 
-    const promptText = promptSetting?.value || defaultPrompt;
+// Your task is to analyze a user's sustainability report along with their questionnaire responses (questions + answers). Based on this data, identify root causes of environmental impact and map them to broader systemic consequences.
+
+// ### INPUT:
+// You will receive:
+// 1. A sustainability report (textual insights, observations, or summaries)
+// 2. A set of user questions and their answers (behavioral data)
+
+// ### OBJECTIVE:
+// Generate a structured analysis that identifies:
+// - Key impact areas
+// - Root causes (based on user behavior)
+// - Systemic environmental impact (macro-level consequences)
+
+// ### ANALYSIS FRAMEWORK:
+
+// For each identified area, follow this structure:
+
+// -> Area: <Category Name>  
+//    (Examples: Energy, Transport, Waste, Food, Lifestyle, etc.)
+
+// -> Root Cause:
+//    - Identify specific user behaviors contributing to emissions or environmental harm
+//    - Use both report data and user answers to justify reasoning
+
+// -> Systemic Impact:
+//    - Explain broader environmental consequences
+//    - Map to real-world ESG effects such as:
+//      - Scope 1 / Scope 2 / Scope 3 emissions
+//      - Air pollution (PM2.5, NOx, etc.)
+//      - Fossil fuel dependency
+//      - Landfill methane emissions
+//      - Water pollution / microplastics
+//      - Resource depletion
+
+// ### REQUIREMENTS:
+// - Be analytical, not descriptive
+// - Infer hidden patterns from user answers (not just direct statements)
+// - Use precise sustainability terminology
+// - Keep output structured and consistent
+// - Avoid generic statements
+
+// ### OUTPUT FORMAT:
+
+// Root Cause & Environmental Impact Analysis:
+
+// -> Area: <Area Name>
+//    Root Cause: <Behavior-based reasoning> (Max 2 Lines)
+//    Systemic Impact: <Macro-level ESG impact> (Max 2 Lines)
+
+// (Repeat for all relevant areas)
+
+// ---
+
+// Now analyze the given user report and responses and generate the structured output.
+// User Score: ${score} Earths, Total CO2: ${totalCO2} kg/month
+// User Category Breakdown: ${categories}
+// User Answers:
+// ${answers}
+// `
+
+    // const promptText = promptSetting?.value || defaultPrompt;
+    const promptText =  defaultPrompt;
 
 
     const selectedModelName = "minimax/minimax-m2.5:free"; 
