@@ -663,8 +663,8 @@ export default function AdminPage() {
                 background: '#fff', color: '#c62828', fontSize: '13px', fontWeight: 600, cursor: 'pointer',
               }}>🗑 Clear All</button>
             </div>
-            <div style={{ ...S.card, overflowX: 'auto', width: '100%' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px', tableLayout: 'fixed', wordBreak: 'break-word' }}>
+            <div style={{ ...S.card, overflow: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
                 <thead>
                   <tr style={{ borderBottom: '2px solid #e8f0e9' }}>
                     {['NAME','EMP ID','DEPARTMENT','CO₂/MONTH','EARTHS','LEVEL','DATE','ENERGY','TRANSPORT','FOOD','WASTE',''].map(h => (
@@ -672,7 +672,6 @@ export default function AdminPage() {
                         padding: '14px 20px', textAlign: 'left', fontSize: '11px', fontWeight: 700,
                         color: '#6c757d', letterSpacing: '0.5px', textTransform: 'uppercase',
                         background: '#f8fdf9',
-                        whiteSpace: 'normal',
                       }}>{h}</th>
                     ))}
                   </tr>
