@@ -667,7 +667,7 @@ export default function AdminPage() {
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
                 <thead>
                   <tr style={{ borderBottom: '2px solid #e8f0e9' }}>
-                    {['NAME','EMP ID','DEPARTMENT','CO₂/MONTH','EARTHS','LEVEL','DATE',''].map(h => (
+                    {['NAME','EMP ID','DEPARTMENT','CO₂/MONTH','EARTHS','LEVEL','DATE','ENERGY','TRANSPORT','FOOD','WASTE',''].map(h => (
                       <th key={h} style={{
                         padding: '14px 20px', textAlign: 'left', fontSize: '11px', fontWeight: 700,
                         color: '#6c757d', letterSpacing: '0.5px', textTransform: 'uppercase',
@@ -711,6 +711,10 @@ export default function AdminPage() {
                       <td style={{ padding: '16px 20px', fontSize: '12px', color: '#6c757d' }}>
                         {r.date || new Date(r.createdAt || '').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                       </td>
+                      <td style={{ padding: '16px 20px', fontWeight: 700, color: '#1b4332' }}>{r.catData.energy.co2} kg</td>
+                      <td style={{ padding: '16px 20px', fontWeight: 700, color: '#1b4332' }}>{r.catData.transport.co2} kg</td>
+                      <td style={{ padding: '16px 20px', fontWeight: 700, color: '#1b4332' }}>{r.catData.food.co2} kg</td>
+                      <td style={{ padding: '16px 20px', fontWeight: 700, color: '#1b4332' }}>{r.catData.waste.co2} kg</td>
                       <td style={{ padding: '16px 20px' }}>
                         <button onClick={e => { e.stopPropagation(); deleteResponse(r._id); }} style={S.btnDel}>Del</button>
                       </td>
